@@ -3,11 +3,15 @@ class Porfolio:
     def __init__(self):
         self.holdings = dict()
 
-    def buy(self, ticker: str, amount: int):
+    def buy(self, ticker: str, default_position: int=100):
         if ticker not in self.holdings.keys():
             self.holdings[ticker] = 0
         
-        self.holdings[ticker] += abs(amount)
+        self.holdings[ticker] += abs(default_position)
+
+    def build(self, tickers: list, default_position: int=100):
+        for t in tickers:
+            self.buy(t, default_position)
 
     def list_holdings(self) -> dict:
         return self.holdings

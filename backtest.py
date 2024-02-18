@@ -1,10 +1,14 @@
+import random
+
 from src.classes import Porfolio, Tester
 
-p1 = Porfolio()
+ibov = ['BBDC4', 'PETR4', 'VALE3', 'ITUB4']
 
-p1.buy('AAPL', 300)
-p1.buy('AAPL', 200)
-p1.buy('GOOGL', 200)
-p1.buy('META', 200)
+amostra = random.sample(ibov, 2)
 
-print(p1.list_holdings())
+portfolio = Porfolio()
+
+portfolio.build(amostra)
+portfolio.buy('BBDC4')
+
+print(portfolio.list_holdings())
